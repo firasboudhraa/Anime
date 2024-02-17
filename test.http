@@ -1,0 +1,32 @@
+###
+POST http://127.0.0.1:3000/anime/create-anime HTTP/1.1
+Content-Type: application/json
+
+{
+    "uid": 281049679,
+    "title": "Test Anime",
+    "synopsis": "This is a placeholder synopsis for the test anime. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "genre": "Action, Adventure, Fantasy",
+    "aired": "Spring 2024",
+    "episodes": 12,
+    "members": 5000,
+    "popularity": 1234,
+    "ranked": 50,
+    "score": 8.5,
+    "img_url": "https://example.com/test-anime-image.jpg",
+    "link": "https://example.com/test-anime"
+}
+
+###
+POST http://127.0.0.1:3000/anime/delete-anime-by-uid HTTP/1.1
+Content-Type: application/json
+
+{
+    "uid": 281049679
+}
+
+
+
+
+
+
