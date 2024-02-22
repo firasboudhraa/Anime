@@ -1,52 +1,21 @@
 ###
-POST http://127.0.0.1:3000/anime/create-many-anime HTTP/1.1
+POST http://127.0.0.1:3000/anime/create-one-anime HTTP/1.1
 Content-Type: application/json
 
-[
-   {
-      "uid": 281049680,
-      "title": "Adventure Quest",
-      "synopsis": "Join our heroes on an epic quest through magical lands and treacherous dungeons.",
-      "genre": "Adventure, Fantasy",
-      "aired": "Fall 2023",
-      "episodes": 24,
-      "members": 8000,
-      "popularity": 1500,
-      "ranked": 30,
-      "score": 9.0,
-      "img_url": "https://example.com/adventure-quest-image.jpg",
-      "link": "https://example.com/adventure-quest"
-   },
-   {
-      "uid": 281049681,
-      "title": "Sci-Fi Galaxy",
-      "synopsis": "Explore the wonders of the universe as humanity ventures into the far reaches of space.",
-      "genre": "Science Fiction, Space",
-      "aired": "Summer 2024",
-      "episodes": 20,
-      "members": 6000,
-      "popularity": 1200,
-      "ranked": 40,
-      "score": 8.7,
-      "img_url": "https://example.com/sci-fi-galaxy-image.jpg",
-      "link": "https://example.com/sci-fi-galaxy"
-   },
-   {
-      "uid": 281049682,
-      "title": "Slice of Life Chronicles",
-      "synopsis": "Follow the daily lives and heartfelt stories of a group of friends in a charming small town.",
-      "genre": "Slice of Life, Drama",
-      "aired": "Winter 2025",
-      "episodes": 16,
-      "members": 7000,
-      "popularity": 1400,
-      "ranked": 35,
-      "score": 8.9,
-      "img_url": "https://example.com/slice-of-life-chronicles-image.jpg",
-      "link": "https://example.com/slice-of-life-chronicles"
-   }
-]
-
+{
+   "uid": 281339680,
+   "title": "Adventure Quest",
+   "synopsis": "Join our heroes on an epic quest through magical lands and treacherous dungeons.",
+   "genre": "Adventure, Fantasy",
+   "aired": "Fall 2023",
+   "episodes": 24,
+   "members": 8000,
+   "popularity": 1500,
+   "ranked": 30,
+   "score": 9.0,
+   "img_url": "https://example.com/adventure-quest-image.jpg",
+   "link": "https://example.com/adventure-quest"
+}
 ###
 POST http://127.0.0.1:3000/anime/delete-one-anime-by-uid HTTP/1.1
 Content-Type: application/json
@@ -127,7 +96,7 @@ GET http://127.0.0.1:3000/anime/read-one-anime HTTP/1.1
 Content-Type: application/json
 
 {
-    "uid": 281049680
+    "uid": 281339680
 }
 
 ###

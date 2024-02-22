@@ -6,7 +6,7 @@ exports.createMany = async (req, res) => {
 };
 
 exports.createOne = async (req, res) => {
-  await AnimeModel.createOne(req.body);
+  await AnimeModel.create(req.body);
   return res.sendStatus(201);
 };
 
@@ -25,17 +25,20 @@ exports.updateOne = async (req, res) => {
 };
 
 exports.updateMany = async (req, res) => {
-  const updatedAnime = await AnimeModel.updateMany({ uid: req.body.uid }, req.body);
+  const updatedAnime = await AnimeModel.updateMany(
+    { uid: req.body.uid },
+    req.body
+  );
   return res.sendStatus(200).json(updatedAnime);
 };
 
 exports.readOne = async (req, res) => {
-  const anime = await AnimeModel.find({ uid: req.body.uid });
+  const anime = await AnimeModel.find({ uid: req.body.uid }).populate('reviews');
+  
   return res.status(200).json(anime);
 };
 
 exports.readMany = async (req, res) => {
-  const anime = await AnimeModel.find({ uid:{$in: req.body.uid }});
+  const anime = await AnimeModel.find({ uid: { $in: req.body.uid } });
   return res.status(200).json(anime);
 };
-

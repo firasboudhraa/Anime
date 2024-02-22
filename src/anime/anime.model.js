@@ -1,40 +1,11 @@
 const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
-const reviewSchema = new Schema(
-  {
-    uid: {
-      type: Number,
-    },
-    profile: {
-      type: String,
-    },
-    anime_uid: {
-      type: Number,
-    },
-    text: {
-      type: String,
-    },
-    score: {
-      type: Number,
-    },
-    scores: [
-      {
-        type: String,
-      },
-    ],
-    link: {
-      type: String,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
 const animeSchema = new Schema(
   {
     uid: {
       type: String,
+      unique : true,
     },
     title: {
       type: String,
@@ -71,6 +42,12 @@ const animeSchema = new Schema(
     link: {
       type: String,
     },
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Review",
+      },
+    ],
   },
   {
     timestamps: true,

@@ -12,4 +12,5 @@ router.post("/update-one-anime",animeController.updateOne);
 router.get("/read-one-anime",animeController.readOne);
 router.get("/read-many-anime",animeController.readMany);
 
+
 module.exports = router;
