@@ -33,10 +33,11 @@ exports.updateMany = async (req, res) => {
 };
 
 exports.readOne = async (req, res) => {
-  const anime = await AnimeModel.find({ uid: req.body.uid }).populate('reviews');
+  const anime = await AnimeModel.find({ uid: req.body.uid }).populate({path : 'reviews', options:{sort :{score : -1}}}).lean();
   
   return res.status(200).json(anime);
 };
+
 
 exports.readMany = async (req, res) => {
   const anime = await AnimeModel.find({ uid: { $in: req.body.uid } });

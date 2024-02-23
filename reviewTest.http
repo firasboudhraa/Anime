@@ -6,7 +6,14 @@ Content-Type: application/json
   "anime_uid": 281339680,
   "profile": "User Profile URL or Strfdlk,hkdf ing",
   "text": "This is a sample review text.",
-  "score": 8,
+  "score": 16,
   "scores": 9,
   "link": "https://example.com/link-to-something"
+}
+###
+POST http://127.0.0.1:3000/review/delete-one-review
+Content-Type: application/json
+
+{
+  "anime_uid": 281339680
 }

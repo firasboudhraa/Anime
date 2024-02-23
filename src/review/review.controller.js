@@ -1,13 +1,22 @@
 const ReviewModel = require("./review.model");
 const AnimeModel = require("../anime/anime.model");
 
-
 exports.createOne = async (req, res) => {
   const anime = await AnimeModel.findOne({ uid: req.body.anime_uid });
   if (!anime) return res.sendStatus(404);
   const review = await ReviewModel.create(req.body);
-  anime.reviews.push(review)
-  await anime.save()
+  anime.reviews.push(review);
+  await anime.save();
   return res.sendStatus(201);
 };
 
+exports.deleteOne = async (req, res) => {
+  const anime = await AnimeModel.findOne({ uid: req.body.anime_uid });
+  if (!anime) return res.sendStatus(404);
+  const review = await ReviewModel.findOne({anime_uid : req.body.anime_uid});
+  if (!review) return res.sendStatus(404);
+  anime.reviews.pull(review);
+  await anime.save();
+  await ReviewModel.deleteOne({ anime_uid: req.body.anime_uid });
+  return res.sendStatus(201);
+};
