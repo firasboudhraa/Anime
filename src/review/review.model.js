@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const reviewSchema = new Schema(
   {
-    anime_uid: {
+    uid: {
       type: Number,
     },
     profile: {

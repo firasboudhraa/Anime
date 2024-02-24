@@ -3,17 +3,42 @@ POST http://127.0.0.1:3000/review/create-one-review
 Content-Type: application/json
 
 {
-  "anime_uid": 281339680,
+  "uid":20101995,
   "profile": "User Profile URL or Strfdlk,hkdf ing",
+  "anime_uid": 281339680,
   "text": "This is a sample review text.",
-  "score": 16,
+  "score": 8,
   "scores": 9,
   "link": "https://example.com/link-to-something"
 }
+
 ###
 POST http://127.0.0.1:3000/review/delete-one-review
 Content-Type: application/json
 
 {
-  "anime_uid": 281339680
+  "anime_uid": 281339680,
+  "uid": 20101996
+}
+
+###
+POST  http://127.0.0.1:3000/review/update-one-review HTTP/1.1
+Content-Type: application/json
+
+{
+  "uid":20101995,
+  "profile": "User Profile URL or Strfdlk,hkdf ing",
+  "anime_uid": 281339680,
+  "text": "This is a sample review text.",
+  "score": 10,
+  "scores": 9,
+  "link": "https://example.com/link-to-something"
+}
+###
+GET http://127.0.0.1:3000/review/read-one-review HTTP/1.1
+Content-Type: application/json
+
+{
+  "anime_uid": 281339680,
+  "uid": 20101995
 }
