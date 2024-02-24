@@ -18,8 +18,8 @@ const sendSuccessResponse = (res, codeStatus = 200, data = []) => {
     sendSuccessResponse(res);
   };
   
-  const sendSuccessfulRead = (res) => {
-    sendSuccessResponse(res);
+  const sendSuccessfulRead = (res,data) => {
+    sendSuccessResponse(res,200,data);
   };
   
   module.exports = {

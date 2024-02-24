@@ -1,14 +1,19 @@
-const { sendSuccessfulDeletion, sendSuccessfulUpdate, sendSuccessfulRead } = require("../lib/utility ");
+const {
+  sendSuccessfulDeletion,
+  sendSuccessfulUpdate,
+  sendSuccessfulRead,
+  sendSuccessfulCreation,
+} = require("../lib/utility ");
 const AnimeModel = require("./anime.model");
 
 exports.createMany = async (req, res) => {
-  const CreatedAnime = await AnimeModel.createMany(req.body);
-  return sendSuccessfulCreation(res,CreatedAnime);
+  const CreatedAnime = await AnimeModel.insertMany(req.body);
+  return sendSuccessfulCreation(res);
 };
 
 exports.createOne = async (req, res) => {
   const CreatedAnime = await AnimeModel.create(req.body);
-  return sendSuccessfulCreation(res ,CreatedAnime );
+  return sendSuccessfulCreation(res, CreatedAnime);
 };
 
 exports.deleteManyByUid = async (req, res) => {
@@ -30,11 +35,9 @@ exports.updateOne = async (req, res) => {
   return sendSuccessfulUpdate(res);
 };
 
-
 exports.readOne = async (req, res) => {
   const anime = await AnimeModel.findOne({ uid: req.body.uid })
-    .populate({ path: "reviews", options: { sort: { score: -1 } } })
-    .lean();
+    .populate({ path: "reviews", options: { sort: { score: -1 } } }).lean();
   if (!anime) throw new Error("NOT_FOUND");
 
   return sendSuccessfulRead(res,anime);
@@ -43,5 +46,5 @@ exports.readOne = async (req, res) => {
 exports.readMany = async (req, res) => {
   const anime = await AnimeModel.find({ uid: { $in: req.body.uid } });
   if (!anime) throw new Error("NOT_FOUND");
-  return sendSuccessfulRead(res,anime);
+  return sendSuccessfulRead(res, anime);
 };

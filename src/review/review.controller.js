@@ -19,7 +19,7 @@ exports.deleteOne = async (req, res) => {
   anime.reviews.pull(review);
   await anime.save();
   await ReviewModel.deleteOne({ uid: req.body.uid });
-  return sendSuccessfulDeletion(res , {message : 'deletion successful'});
+  return sendSuccessfulDeletion(res );
 };
 
 exports.updateOne = async (req, res) => {
@@ -37,5 +37,5 @@ exports.readOne = async (req, res) => {
   const review = await ReviewModel.findOne({ uid: req.body.uid });
   if (!review) {throw new Error("NOT_FOUND")};
 
-  return sendSuccessfulRead(res);
+  return sendSuccessfulRead(res,review);
 };
