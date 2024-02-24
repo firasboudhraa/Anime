@@ -3,7 +3,7 @@ const AnimeModel = require("../anime/anime.model");
 
 exports.createOne = async (req, res) => {
   const anime = await AnimeModel.findOne({ uid: req.body.anime_uid });
-  if (!anime) return res.sendStatus(404);
+  if (!anime) {throw new Error("NOT_FOUND")} ;
   const review = await ReviewModel.create(req.body);
   anime.reviews.push(review);
   await anime.save();
@@ -12,9 +12,9 @@ exports.createOne = async (req, res) => {
 
 exports.deleteOne = async (req, res) => {
   const anime = await AnimeModel.findOne({ uid: req.body.anime_uid });
-  if (!anime) return res.sendStatus(404);
+  if (!anime) {throw new Error("NOT_FOUND")};
   const review = await ReviewModel.findOne({ uid: req.body.uid });
-  if (!review) return res.sendStatus(404);
+  if (!review) {throw new Error("NOT_FOUND")};
   anime.reviews.pull(review);
   await anime.save();
   await ReviewModel.deleteOne({ uid: req.body.uid });
@@ -23,7 +23,7 @@ exports.deleteOne = async (req, res) => {
 
 exports.updateOne = async (req, res) => {
   const anime = await AnimeModel.findOne({ uid: req.body.anime_uid });
-  if (!anime) return res.sendStatus(404);
+  if (!anime) {throw new Error("NOT_FOUND")};
 
   const review = await ReviewModel.updateOne({ uid: req.body.uid }, req.body);
   return res.sendStatus(200);
@@ -31,10 +31,10 @@ exports.updateOne = async (req, res) => {
 
 exports.readOne = async (req, res) => {
   const anime = await AnimeModel.findOne({ uid: req.body.anime_uid });
-  if (!anime) return res.status(404).json({ message: 'Anime not found' });
+  if (!anime) {throw new Error("NOT_FOUND")};
 
   const review = await ReviewModel.findOne({ uid: req.body.uid });
-  if (!review) return res.status(404).json({ message: 'Review not found' });
+  if (!review) {throw new Error("NOT_FOUND")};
 
   return res.status(200).json(review);
 };
