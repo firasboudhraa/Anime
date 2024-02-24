@@ -1,5 +1,6 @@
 const ReviewModel = require("./review.model");
 const AnimeModel = require("../anime/anime.model");
+const {sendSuccessfulCreation, sendSuccessfulDeletion, sendSuccessfulUpdate, sendSuccessfulRead } = require("../lib/utility ");
 
 exports.createOne = async (req, res) => {
   const anime = await AnimeModel.findOne({ uid: req.body.anime_uid });
@@ -7,7 +8,7 @@ exports.createOne = async (req, res) => {
   const review = await ReviewModel.create(req.body);
   anime.reviews.push(review);
   await anime.save();
-  return res.sendStatus(201);
+  return sendSuccessfulCreation(res);
 };
 
 exports.deleteOne = async (req, res) => {
@@ -18,7 +19,7 @@ exports.deleteOne = async (req, res) => {
   anime.reviews.pull(review);
   await anime.save();
   await ReviewModel.deleteOne({ uid: req.body.uid });
-  return res.sendStatus(201);
+  return sendSuccessfulDeletion(res , {message : 'deletion successful'});
 };
 
 exports.updateOne = async (req, res) => {
@@ -26,7 +27,7 @@ exports.updateOne = async (req, res) => {
   if (!anime) {throw new Error("NOT_FOUND")};
 
   const review = await ReviewModel.updateOne({ uid: req.body.uid }, req.body);
-  return res.sendStatus(200);
+  return sendSuccessfulUpdate(res);
 };
 
 exports.readOne = async (req, res) => {
@@ -36,5 +37,5 @@ exports.readOne = async (req, res) => {
   const review = await ReviewModel.findOne({ uid: req.body.uid });
   if (!review) {throw new Error("NOT_FOUND")};
 
-  return res.status(200).json(review);
+  return sendSuccessfulRead(res);
 };
