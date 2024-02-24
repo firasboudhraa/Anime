@@ -17,6 +17,42 @@ Content-Type: application/json
    "link": "https://example.com/adventure-quest"
 }
 ###
+POST http://127.0.0.1:3000/anime/create-many-anime HTTP/1.1
+Content-Type: application/json
+
+[
+  {
+   "uid": 281339681,
+   "title": "Action Quest",
+   "synopsis": "Join our heroes on an epic quest through magical lands and treacherous dungeons.",
+   "genre": "Adventure, Fantasy",
+   "aired": "Fall 2023",
+   "episodes": 24,
+   "members": 8000,
+   "popularity": 1500,
+   "ranked": 30,
+   "score": 9.0,
+   "img_url": "https://example.com/adventure-quest-image.jpg",
+   "link": "https://example.com/adventure-quest"
+  },
+  {
+         "uid": 123456789,
+         "title": "Mystical Chronicles",
+         "synopsis": "Embark on a journey filled with magic, mystery, and ancient prophecies.",
+         "genre": "Fantasy, Magic",
+         "aired": "Spring 2024",
+         "episodes": 20,
+         "members": 6000,
+         "popularity": 1200,
+         "ranked": 45,
+         "score": 8.5,
+         "img_url": "https://example.com/mystical-chronicles-image.jpg",
+         "link": "https://example.com/mystical-chronicles"
+  }
+]
+
+
+###
 POST http://127.0.0.1:3000/anime/delete-one-anime-by-uid HTTP/1.1
 Content-Type: application/json
 
