@@ -108,6 +108,11 @@ Content-Type: application/json
     "uid": [281049682,281049681]
 }
 
+###
+curl -X POST http://127.0.0.1:3000/anime/upload-from-csv
+
+
+
 
 
 

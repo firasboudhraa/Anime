@@ -12,6 +12,6 @@ router.post("/delete-many-anime-by-uid",errorWrapper(animeController.deleteManyB
 router.post("/update-one-anime",errorWrapper(animeController.updateOne));
 router.get("/read-one-anime",errorWrapper(animeController.readOne));
 router.get("/read-many-anime",errorWrapper(animeController.readMany));
-
+router.post('/upload-from-csv', errorWrapper(animeController.uploadFromCSV));
 
 module.exports = router;
